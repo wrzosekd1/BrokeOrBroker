@@ -24,7 +24,7 @@ public class Mainmenu extends ActionBarActivity {
 
 
     //Search
-    public void Search(View view) {
+    public void SearchCompany(View view) {
 
         Intent i = new Intent(this, Search.class);
         i.putExtra("sampleObject", user);

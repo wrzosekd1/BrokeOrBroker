@@ -1,9 +1,12 @@
 package com.example.david.brokeorbroker;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.widget.TextView;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -40,6 +43,7 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
         String reg_url = "http://10.0.2.2/BrokeOrBroker/register.php";
         String login_url = "http://10.0.2.2/BrokeOrBroker/login.php";
         String update_url = "http://10.0.2.2/BrokeOrBroker/stockDownloader.php";
+        String search_url = "http://10.0.2.2/BrokeOrBroker/SearchCompany.php";
         String method = params[0];
 
         //Registers User
@@ -150,6 +154,40 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
                 e.printStackTrace();
             }
         }
+        else if(method.equals("search")){
+            String companySymbol = params[1];
+            try {
+                URL url = new URL(search_url);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                //httpURLConnection.setDoInput(true);
+                OutputStream OS = httpURLConnection.getOutputStream();
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(OS, "UTF-8"));
+                String data = URLEncoder.encode("symbol", "UTF-8") + "=" + URLEncoder.encode(companySymbol, "UTF-8");
+                bufferedWriter.write(data);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                OS.close();
+
+                InputStream IS = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(IS, "iso-8859-1"));
+                String response = "";
+                response = bufferedReader.readLine();
+                response = response.trim();
+
+                bufferedReader.close();
+                IS.close();
+                //httpURLConnection.connect();
+                httpURLConnection.disconnect();
+
+                return response;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
         return null;
     }
 
@@ -176,6 +214,36 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
             i.putExtra("sampleObject", user);
             ctx.startActivity(i);
         }
+        String arr[] = result.split(" ", 10);
+        String firstWord = arr[0];
+        if(firstWord.equals("SearchSuccess")){
+            String symbol = arr[1];
+            String date = arr[2];
+            String open = arr[3];
+            String high = arr[4];
+            String low = arr[5];
+            String close = arr[6];
+            String volume = arr[7];
+            String percent_change = arr[9];
+            TextView tvSymbol = (TextView)((Activity)ctx).findViewById(R.id.tvSymbol);
+            tvSymbol.setText(symbol);
+            TextView tvDate = (TextView)((Activity)ctx).findViewById(R.id.tvDate);
+            tvDate.setText(date);
+            TextView tvOpen = (TextView)((Activity)ctx).findViewById(R.id.tvOpen);
+            tvOpen.setText("Open: " + open);
+            TextView tvHigh = (TextView)((Activity)ctx).findViewById(R.id.tvHigh);
+            tvHigh.setText("High: " +high);
+            TextView tvLow = (TextView)((Activity)ctx).findViewById(R.id.tvLow);
+            tvLow.setText("Low: " + low);
+            TextView tvClose = (TextView)((Activity)ctx).findViewById(R.id.tvClose);
+            tvClose.setText("Close: " + close);
+            TextView tvVolume = (TextView)((Activity)ctx).findViewById(R.id.tvVolume);
+            tvVolume.setText("Volume: " + volume);
+            TextView tvPercent = (TextView)((Activity)ctx).findViewById(R.id.tvPC);
+            tvPercent.setText(percent_change);
+
+        }
+
 
     }
 }

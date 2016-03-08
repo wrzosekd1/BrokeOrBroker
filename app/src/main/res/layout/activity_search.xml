@@ -6,8 +6,7 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.example.david.bob.Search">
 
-    TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-    android:layout_height="wrap_content" />
+
 
     <EditText
         android:layout_width="wrap_content"
@@ -25,16 +24,92 @@
         android:text="Search"
         android:id="@+id/button2"
         android:layout_below="@+id/cSymbol"
+        android:layout_centerHorizontal="true"
+        android:onClick="Search"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Symbol"
+        android:id="@+id/tvSymbol"
+        android:layout_below="@+id/button2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="29dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="PC"
+        android:id="@+id/tvPC"
+        android:layout_alignTop="@+id/tvSymbol"
+        android:layout_alignRight="@+id/cSymbol"
+        android:layout_alignEnd="@+id/cSymbol" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Date"
+        android:id="@+id/tvDate"
+        android:layout_alignTop="@+id/tvSymbol"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="High"
+        android:id="@+id/tvHigh"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="33dp"
+        android:layout_below="@+id/tvSymbol"
         android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="User"
-        android:id="@+id/text_user"
-        android:layout_below="@+id/button2"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Low"
+        android:id="@+id/tvLow"
+        android:layout_below="@+id/tvHigh"
+        android:layout_gravity="center_horizontal"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="53dp" />
+        android:layout_marginTop="33dp"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Open"
+        android:id="@+id/tvOpen"
+        android:layout_marginTop="33dp"
+        android:layout_below="@+id/tvLow"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Close"
+        android:id="@+id/tvClose"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/tvOpen"
+        android:layout_marginTop="33dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Volume"
+        android:id="@+id/tvVolume"
+        android:layout_below="@+id/tvClose"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="33dp"
+         />
+
 
 </RelativeLayout>
