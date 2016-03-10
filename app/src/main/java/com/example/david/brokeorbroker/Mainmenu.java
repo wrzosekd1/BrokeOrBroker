@@ -31,4 +31,12 @@ public class Mainmenu extends ActionBarActivity {
         this.startActivity(i);
 
     }
+
+    //Favorites
+    public void Favorites(View view){
+        BackgroundTask backgroundTask = new BackgroundTask(this);
+        String method = "favoriteMenu";
+        String username = user.getUsername();
+        backgroundTask.execute(method, username);
+    }
 }

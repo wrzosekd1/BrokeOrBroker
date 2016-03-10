@@ -4,6 +4,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="#ff72b5b9"
     tools:context="com.example.david.bob.Mainmenu">
 
     <Button
@@ -11,8 +12,27 @@
         android:layout_height="wrap_content"
         android:text="Search"
         android:id="@+id/button"
-        android:layout_marginTop="87dp"
+        android:layout_marginTop="33dp"
+        android:onClick="SearchCompany"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Main Menu"
+        android:id="@+id/textView"
         android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Favorites"
+        android:id="@+id/button3"
+        android:layout_marginTop="31dp"
+        android:layout_below="@+id/button"
         android:layout_centerHorizontal="true"
-        android:onClick="SearchCompany"/>
+        android:onClick="Favorites"/>
 </RelativeLayout>

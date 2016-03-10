@@ -5,8 +5,9 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -27,6 +28,7 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
     AlertDialog alertDialog;
     Context ctx;
     User user;
+    String json_string;
 
     BackgroundTask(Context ctx) {
         this.ctx = ctx;
@@ -35,7 +37,7 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
     @Override
     protected void onPreExecute() {
         alertDialog = new AlertDialog.Builder(ctx).create();
-        alertDialog.setTitle("Login information...");
+        alertDialog.setTitle("Message...");
     }
 
     @Override
@@ -44,6 +46,9 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
         String login_url = "http://10.0.2.2/BrokeOrBroker/login.php";
         String update_url = "http://10.0.2.2/BrokeOrBroker/stockDownloader.php";
         String search_url = "http://10.0.2.2/BrokeOrBroker/SearchCompany.php";
+        String favorite_url = "http://10.0.2.2/BrokeOrBroker/getFavorites.php";
+        String add_removeFavorite_url = "http://10.0.2.2/BrokeOrBroker/Favorite.php";
+
         String method = params[0];
 
         //Registers User
@@ -188,6 +193,73 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
                 e.printStackTrace();
             }
         }
+        else if(method.equals("favoriteMenu")){
+            String username = params[1];
+            try {
+                URL url = new URL(favorite_url);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+
+                OutputStream OS = httpURLConnection.getOutputStream();
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(OS, "UTF-8"));
+                String data = URLEncoder.encode("username", "UTF-8") + "=" + URLEncoder.encode(username, "UTF-8");
+                bufferedWriter.write(data);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                OS.close();
+
+
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                StringBuilder stringBuilder = new StringBuilder();
+                while ((json_string = bufferedReader.readLine()) != null) {
+                    stringBuilder.append(json_string + "\n");
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return stringBuilder.toString().trim();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else if(method.equals("favorite")){
+            String username = params[1];
+            String companySymbol = params[2];
+            try {
+                URL url = new URL(add_removeFavorite_url);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+
+                OutputStream OS = httpURLConnection.getOutputStream();
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(OS, "UTF-8"));
+                String data = URLEncoder.encode("username", "UTF-8") + "=" + URLEncoder.encode(username, "UTF-8") + "&" +
+                        URLEncoder.encode("symbol", "UTF-8") + "=" + URLEncoder.encode(companySymbol, "UTF-8");
+                bufferedWriter.write(data);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                OS.close();
+
+                InputStream IS = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(IS, "iso-8859-1"));
+                bufferedReader.close();
+                IS.close();
+
+
+                httpURLConnection.disconnect();
+
+                return "done";
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
         return null;
     }
 
@@ -213,7 +285,13 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
             Intent i = new Intent(ctx, Mainmenu.class);
             i.putExtra("sampleObject", user);
             ctx.startActivity(i);
+        } else if(result.contains("server_response")){
+            json_string = result;
+            Intent i = new Intent(ctx,FavoriteList.class);
+            i.putExtra("json_data",json_string);
+            ctx.startActivity(i);
         }
+
         String arr[] = result.split(" ", 10);
         String firstWord = arr[0];
         if(firstWord.equals("SearchSuccess")){
@@ -227,20 +305,30 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
             String percent_change = arr[9];
             TextView tvSymbol = (TextView)((Activity)ctx).findViewById(R.id.tvSymbol);
             tvSymbol.setText(symbol);
+            tvSymbol.setVisibility(View.VISIBLE);
             TextView tvDate = (TextView)((Activity)ctx).findViewById(R.id.tvDate);
             tvDate.setText(date);
+            tvDate.setVisibility(View.VISIBLE);
             TextView tvOpen = (TextView)((Activity)ctx).findViewById(R.id.tvOpen);
             tvOpen.setText("Open: " + open);
+            tvOpen.setVisibility(View.VISIBLE);
             TextView tvHigh = (TextView)((Activity)ctx).findViewById(R.id.tvHigh);
             tvHigh.setText("High: " +high);
+            tvHigh.setVisibility(View.VISIBLE);
             TextView tvLow = (TextView)((Activity)ctx).findViewById(R.id.tvLow);
             tvLow.setText("Low: " + low);
+            tvLow.setVisibility(View.VISIBLE);
             TextView tvClose = (TextView)((Activity)ctx).findViewById(R.id.tvClose);
             tvClose.setText("Close: " + close);
+            tvClose.setVisibility(View.VISIBLE);
             TextView tvVolume = (TextView)((Activity)ctx).findViewById(R.id.tvVolume);
             tvVolume.setText("Volume: " + volume);
+            tvVolume.setVisibility(View.VISIBLE);
             TextView tvPercent = (TextView)((Activity)ctx).findViewById(R.id.tvPC);
             tvPercent.setText(percent_change);
+            tvPercent.setVisibility(View.VISIBLE);
+            Button fButton = (Button)((Activity)ctx).findViewById(R.id.bFavorite);
+            fButton.setVisibility(View.VISIBLE);
 
         }
 
