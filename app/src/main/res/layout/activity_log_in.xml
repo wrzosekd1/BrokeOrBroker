@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login Form"
+        android:text="Sign In"
         android:textAppearance="?android:textAppearanceLarge"
         android:textStyle="bold"
         android:layout_gravity="center_horizontal"
@@ -36,7 +36,7 @@
     <Button
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:text="Login"
+        android:text="Sign In"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
         android:onClick="userLogin"
@@ -44,7 +44,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Register Now"
+        android:text="Sign Up"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="50dp"
         android:onClick="userReg"

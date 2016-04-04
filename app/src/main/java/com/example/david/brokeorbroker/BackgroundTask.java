@@ -45,14 +45,14 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... params) {
-        String reg_url = "http://10.0.2.2/BrokeOrBroker/register.php";
-        String login_url = "http://10.0.2.2/BrokeOrBroker/login.php";
-        String update_url = "http://10.0.2.2/BrokeOrBroker/stockDownloader.php";
-        String search_url = "http://10.0.2.2/BrokeOrBroker/SearchCompany.php";
-        String favorite_url = "http://10.0.2.2/BrokeOrBroker/getFavorites.php";
-        String add_removeFavorite_url = "http://10.0.2.2/BrokeOrBroker/Favorite.php";
-        String history_url = "http://10.0.2.2/BrokeOrBroker/getHistory.php";
-        String hotstocks_url = "http://10.0.2.2/BrokeOrBroker/GetHotStocks.php";
+        String reg_url = "http://menesesj2.leto.feralhosting.com/BrokeBroker/register.php";
+        String login_url = "http://menesesj2.leto.feralhosting.com/BrokeBroker/login.php";
+        String update_url = "http://menesesj2.leto.feralhosting.com/BrokeBroker/stockDownloader.php";
+        String search_url = "http://menesesj2.leto.feralhosting.com/BrokeBroker/SearchCompany.php";
+        String favorite_url = "http://menesesj2.leto.feralhosting.com/BrokeBroker/getFavorites.php";
+        String add_removeFavorite_url = "http://menesesj2.leto.feralhosting.com/BrokeBroker/Favorite.php";
+        String history_url = "http://menesesj2.leto.feralhosting.com/BrokeBroker/getHistory.php";
+        String hotstocks_url = "http://menesesj2.leto.feralhosting.com/BrokeBroker/GetHotStocks.php";
         String method = params[0];
 
         //Registers User

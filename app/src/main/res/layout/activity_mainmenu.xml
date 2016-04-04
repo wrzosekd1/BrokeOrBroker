@@ -15,7 +15,8 @@
         android:layout_marginTop="33dp"
         android:onClick="SearchCompany"
         android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/red_button"/>
 
     <TextView
         android:layout_width="wrap_content"
