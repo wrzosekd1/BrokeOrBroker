@@ -25,10 +25,9 @@ public class Mainmenu extends ActionBarActivity {
 
     //Search
     public void SearchCompany(View view) {
-        String empty = "";
+
         Intent i = new Intent(this, Search.class);
         i.putExtra("sampleObject", user);
-        i.putExtra("symbol", empty);
         this.startActivity(i);
 
     }
@@ -39,28 +38,5 @@ public class Mainmenu extends ActionBarActivity {
         String method = "favoriteMenu";
         String username = user.getUsername();
         backgroundTask.execute(method, username);
-    }
-
-    //History
-    public void History(View view){
-        BackgroundTask backgroundTask = new BackgroundTask(this);
-        String method = "history";
-        String username = user.getUsername();
-        backgroundTask.execute(method, username);
-    }
-
-    //Hot Stocks
-    public void HotStocks(View view){
-        BackgroundTask backgroundTask = new BackgroundTask(this);
-        String method = "hotstocks";
-        String username = user.getUsername();
-        backgroundTask.execute(method, username);
-    }
-
-
-    //Log Out
-    public void LogOut(View view){
-        user.logout();
-        startActivity(new Intent(this,LogIn.class));
     }
 }

@@ -43,8 +43,8 @@ public class FavoriteAdapter extends ArrayAdapter{
             LayoutInflater layoutInflater = (LayoutInflater)this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             row = layoutInflater.inflate(R.layout.row_layout,parent,false);
             favoriteHolder = new FavoriteHolder();
-            favoriteHolder.tv_percent_change = (TextView)row.findViewById(R.id.tv_right);
-            favoriteHolder.tv_company = (TextView)row.findViewById(R.id.tv_left);
+            favoriteHolder.tv_percent_change = (TextView)row.findViewById(R.id.tv_percent_change);
+            favoriteHolder.tv_company = (TextView)row.findViewById(R.id.tv_company);
             row.setTag(favoriteHolder);
 
         }

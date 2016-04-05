@@ -38,14 +38,6 @@
             android:name=".FavoriteList"
             android:label="@string/title_activity_favorite_list" >
         </activity>
-        <activity
-            android:name=".HistoryList"
-            android:label="@string/title_activity_history_list" >
-        </activity>
-        <activity
-            android:name=".HotStocksList"
-            android:label="@string/title_activity_hot_stocks_list" >
-        </activity>
     </application>
 
 </manifest>

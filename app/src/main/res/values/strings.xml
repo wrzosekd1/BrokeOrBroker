@@ -8,6 +8,4 @@
     <string name="title_activity_search">Search</string>
     <string name="title_activity_favorites">Favorites</string>
     <string name="title_activity_favorite_list">FavoriteList</string>
-    <string name="title_activity_history_list">HistoryList</string>
-    <string name="title_activity_hot_stocks_list">HotStocksList</string>
 </resources>

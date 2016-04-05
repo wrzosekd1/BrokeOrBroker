@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 public class Search extends ActionBarActivity {
@@ -18,7 +17,6 @@ public class Search extends ActionBarActivity {
     EditText cSymbol;
     TextView tSymbol,tDate,tHigh,tLow,tOpen,tClose,tVolume,tPercentChange;
     Button favoriteButton;
-    String symbol;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,24 +44,15 @@ public class Search extends ActionBarActivity {
 
         Intent i = getIntent();
         user = (User) i.getSerializableExtra("sampleObject");
-        symbol = getIntent().getExtras().getString("symbol");
-
-        if(!symbol.equals("")){
-            String username = user.getUsername();
-            BackgroundTask backgroundTask = new BackgroundTask(this);
-            String method = "search";
-            backgroundTask.execute(method, username, symbol);
-        }
 
     }
 
     public void Search(View view) {
         companySymbol = cSymbol.getText().toString();
-        String username = user.getUsername();
         if (!companySymbol.equals("")) {
             BackgroundTask backgroundTask = new BackgroundTask(this);
             String method = "search";
-            backgroundTask.execute(method, username, companySymbol);
+            backgroundTask.execute(method, companySymbol);
         }
     }
 
