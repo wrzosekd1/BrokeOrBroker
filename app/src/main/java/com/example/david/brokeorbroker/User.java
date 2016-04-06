@@ -22,8 +22,30 @@ public class User implements Serializable {
         password = "";
     }
 
+    public User(String username) {
+
+        this.username = username;
+
+    }
+
     public User(String username, String password) {
 
+        this.username = username;
+        this.password = password;
+
+    }
+    public User(String name, String email, String username) {
+
+        this.name = name;
+        this.email = email;
+        this.username = username;
+
+    }
+
+    public User(String name, String email, String username, String password) {
+
+        this.name = name;
+        this.email = email;
         this.username = username;
         this.password = password;
 
@@ -61,22 +83,7 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public User(String name, String email, String username) {
 
-        this.name = name;
-        this.email = email;
-        this.username = username;
-
-    }
-
-    public User(String name, String email, String username, String password) {
-
-        this.name = name;
-        this.email = email;
-        this.username = username;
-        this.password = password;
-
-    }
 
     //LogIn Method
     public void login(BackgroundTask b) {

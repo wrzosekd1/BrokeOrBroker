@@ -1,13 +1,13 @@
 package com.example.david.brokeorbroker;
 
 /**
- * Created by David on 3/9/2016.
+ * Created by David on 3/12/2016.
  */
-public class Favorite {
+public class HotStocks {
     private String company;
     private String percent_change;
 
-    public Favorite(String percent_change,String company){
+    public HotStocks(String percent_change,String company){
         this.setPercent_change(percent_change);
         this.setCompany(company);
     }
