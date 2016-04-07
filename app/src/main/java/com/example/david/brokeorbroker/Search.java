@@ -49,6 +49,7 @@ public class Search extends ActionBarActivity {
         symbol = getIntent().getExtras().getString("symbol");
 
         if(!symbol.equals("")){
+            symbol = symbol.toUpperCase();
             String username = user.getUsername();
             BackgroundTask backgroundTask = new BackgroundTask(this);
             String method = "search";
