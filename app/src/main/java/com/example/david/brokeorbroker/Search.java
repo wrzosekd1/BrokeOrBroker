@@ -55,7 +55,6 @@ public class Search extends ActionBarActivity {
             String method = "search";
             backgroundTask.execute(method, username, symbol);
         }
-
     }
 
     public void Search(View view) {
@@ -77,10 +76,5 @@ public class Search extends ActionBarActivity {
             String method = "favorite";
             backgroundTask.execute(method,  username,  companySymbol);
         }
-
-
-
     }
-
-
 }
