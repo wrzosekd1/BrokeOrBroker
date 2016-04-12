@@ -340,6 +340,8 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
         if (result.equals("Registration Success...")) {
             alertDialog.setMessage(result);
             alertDialog.show();
+            Intent successIntent = new Intent(ctx, Mainmenu.class);
+            ctx.startActivity(successIntent);
         } else if (result.equals("That username already exists")) {
             alertDialog.setMessage(result);
             alertDialog.show();
