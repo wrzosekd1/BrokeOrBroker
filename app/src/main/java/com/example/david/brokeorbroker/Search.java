@@ -19,6 +19,7 @@ public class Search extends ActionBarActivity {
     TextView tSymbol,tDate,tHigh,tLow,tOpen,tClose,tVolume,tPercentChange;
     Button favoriteButton;
     String symbol;
+    String symbolsInDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,8 +60,11 @@ public class Search extends ActionBarActivity {
 
     public void Search(View view) {
         companySymbol = cSymbol.getText().toString();
+        companySymbol = companySymbol.toUpperCase();
+        companySymbol = "," + companySymbol + ",";
         String username = user.getUsername();
-        if (!companySymbol.equals("")) {
+        symbolsInDatabase = ",YHOO,F,NFLX,ADBE,GE,FB,";
+        if (symbolsInDatabase.contains(companySymbol)) {
             BackgroundTask backgroundTask = new BackgroundTask(this);
             String method = "search";
             backgroundTask.execute(method, username, companySymbol);
