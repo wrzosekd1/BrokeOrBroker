@@ -3,6 +3,7 @@ package com.example.david.brokeorbroker;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.view.View;
@@ -340,8 +341,13 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
         if (result.equals("Registration Success...")) {
             alertDialog.setMessage(result);
             alertDialog.show();
-            Intent successIntent = new Intent(ctx, Mainmenu.class);
-            ctx.startActivity(successIntent);
+            alertDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                @Override
+                public void onDismiss(DialogInterface dialog) {
+                    Intent successIntent = new Intent(ctx, Mainmenu.class);
+                    ctx.startActivity(successIntent);
+                }
+            });
         } else if (result.equals("That username already exists")) {
             alertDialog.setMessage(result);
             alertDialog.show();
