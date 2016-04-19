@@ -59,15 +59,30 @@ public class Search extends ActionBarActivity {
     }
 
     public void Search(View view) {
+        String temp = "";
         companySymbol = cSymbol.getText().toString();
         companySymbol = companySymbol.toUpperCase();
+        temp = companySymbol;
         companySymbol = "," + companySymbol + ",";
         String username = user.getUsername();
         symbolsInDatabase = ",YHOO,F,NFLX,ADBE,GE,FB,";
         if (symbolsInDatabase.contains(companySymbol)) {
             BackgroundTask backgroundTask = new BackgroundTask(this);
             String method = "search";
-            backgroundTask.execute(method, username, companySymbol);
+            backgroundTask.execute(method, username, temp);
+        }
+        else
+        {
+            favoriteButton.setVisibility(View.INVISIBLE);
+            tSymbol.setVisibility(View.INVISIBLE);
+            tDate.setVisibility(View.INVISIBLE);
+            tHigh.setVisibility(View.INVISIBLE);
+            tLow.setVisibility(View.INVISIBLE);
+            tOpen.setVisibility(View.INVISIBLE);
+            tClose.setVisibility(View.INVISIBLE);
+            tVolume.setVisibility(View.INVISIBLE);
+            tPercentChange.setVisibility(View.INVISIBLE);
+            Toast.makeText(Search.this,"Company does not exist",Toast.LENGTH_LONG).show();
         }
     }
 
