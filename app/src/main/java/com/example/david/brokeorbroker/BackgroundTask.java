@@ -3,7 +3,9 @@ package com.example.david.brokeorbroker;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.view.View;
 import android.widget.Button;
@@ -340,6 +342,13 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
         if (result.equals("Registration Success...")) {
             alertDialog.setMessage(result);
             alertDialog.show();
+            alertDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                @Override
+                public void onDismiss(DialogInterface dialog) {
+                    Intent successIntent = new Intent(ctx, LogIn.class);
+                    ctx.startActivity(successIntent);
+                }
+            });
         } else if (result.equals("That username already exists")) {
             alertDialog.setMessage(result);
             alertDialog.show();
@@ -407,6 +416,17 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
             tvPercent.setVisibility(View.VISIBLE);
             Button fButton = (Button) ((Activity) ctx).findViewById(R.id.bFavorite);
             fButton.setVisibility(View.VISIBLE);
+
+            //changes percent text color based if percentage is above or below 0
+            if (Double.parseDouble(percent_change) < 0)
+            {
+
+                tvPercent.setTextColor(Color.parseColor("#FF0000"));
+            }
+            else if (Double.parseDouble(percent_change) > 0)
+            {
+                tvPercent.setTextColor(Color.parseColor("#33ff39"));
+            }
 
         }
 
