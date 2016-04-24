@@ -18,7 +18,7 @@ public class Search extends ActionBarActivity {
     User user;
     String companySymbol;
     EditText cSymbol;
-    TextView tSymbol,tDate,tHigh,tLow,tOpen,tClose,tVolume,tPercentChange,tPredict;
+    TextView tSymbol, tDate, tHigh, tLow, tOpen, tClose, tVolume, tPercentChange, tPredict;
     Button favoriteButton;
     String symbol;
     String symbolsInDatabase;
@@ -53,7 +53,7 @@ public class Search extends ActionBarActivity {
         user = (User) i.getSerializableExtra("sampleObject");
         symbol = getIntent().getExtras().getString("symbol");
 
-        if(!symbol.equals("")){
+        if (!symbol.equals("")) {
             symbol = symbol.toUpperCase();
             String username = user.getUsername();
             BackgroundTask backgroundTask = new BackgroundTask(this);
@@ -78,6 +78,18 @@ public class Search extends ActionBarActivity {
             BackgroundTask backgroundTask = new BackgroundTask(this);
             String method = "search";
             backgroundTask.execute(method, username, tempSymbol);
+        } else {
+            favoriteButton.setVisibility(View.INVISIBLE);
+            tSymbol.setVisibility(View.INVISIBLE);
+            tDate.setVisibility(View.INVISIBLE);
+            tHigh.setVisibility(View.INVISIBLE);
+            tLow.setVisibility(View.INVISIBLE);
+            tOpen.setVisibility(View.INVISIBLE);
+            tClose.setVisibility(View.INVISIBLE);
+            tVolume.setVisibility(View.INVISIBLE);
+            tPercentChange.setVisibility(View.INVISIBLE);
+            tPredict.setVisibility(View.INVISIBLE);
+            Toast.makeText(Search.this, "Company does not exist", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -88,7 +100,7 @@ public class Search extends ActionBarActivity {
         if (!companySymbol.equals("Symbol")) {
             BackgroundTask backgroundTask = new BackgroundTask(this);
             String method = "favorite";
-            backgroundTask.execute(method,  username,  companySymbol);
+            backgroundTask.execute(method, username, companySymbol);
         }
     }
 }
