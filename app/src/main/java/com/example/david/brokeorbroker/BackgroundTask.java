@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +23,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
+import java.text.DecimalFormat;
 
 /**
  * Created by David on 2/12/2016.
@@ -372,7 +374,7 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
             ctx.startActivity(i);
         }
 
-        String arr[] = result.split(" ", 10);
+        String arr[] = result.split(" ", 11);
         String firstWord = arr[0];
         if (firstWord.equals("SearchSuccess")) {
             String symbol = arr[1];
@@ -383,6 +385,7 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
             String close = arr[6];
             String volume = arr[7];
             String percent_change = arr[9];
+            String predicted_value = arr[10];
             TextView tvSymbol = (TextView) ((Activity) ctx).findViewById(R.id.tvSymbol);
             tvSymbol.setText(symbol);
             tvSymbol.setVisibility(View.VISIBLE);
@@ -405,8 +408,32 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
             tvVolume.setText("Volume: " + volume);
             tvVolume.setVisibility(View.VISIBLE);
             TextView tvPercent = (TextView) ((Activity) ctx).findViewById(R.id.tvPC);
-            tvPercent.setText(percent_change);
             tvPercent.setVisibility(View.VISIBLE);
+            Double percentChange = Double.parseDouble(percent_change);
+
+            TextView tvPredicted = (TextView) ((Activity) ctx).findViewById(R.id.tvPredict);
+            tvPredicted.setVisibility(View.VISIBLE);
+            Double predictedValue = Double.parseDouble(predicted_value);
+
+            DecimalFormat df = new DecimalFormat();
+            df.setMaximumFractionDigits(2);
+            tvPercent.setText(df.format(percentChange) + "%");
+            tvPredicted.setText("Tomorrow's price: " + df.format(predictedValue));
+
+            if(percentChange >= 0){
+                tvPercent.setTextColor(Color.parseColor("#2eb82e"));
+            }
+            else{
+                tvPercent.setTextColor(0xffff0000);
+            }
+
+            if(predictedValue >= Double.parseDouble(open)){
+                tvPredicted.setTextColor(Color.parseColor("#2eb82e"));
+            }
+            else{
+                tvPredicted.setTextColor(0xffff0000);
+            }
+
             Button fButton = (Button) ((Activity) ctx).findViewById(R.id.bFavorite);
             fButton.setVisibility(View.VISIBLE);
 

@@ -1,6 +1,7 @@
 package com.example.david.brokeorbroker;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,6 +60,19 @@ public class HotStocksAdapter extends ArrayAdapter {
         HotStocks hotStocks = (HotStocks) this.getItem(position);
         hotStocksHolder.tv_percent_change.setText(hotStocks.getPercent_change());
         hotStocksHolder.tv_company.setText(hotStocks.getCompany());
+        double percent_change = Double.parseDouble(hotStocksHolder.tv_percent_change.getText().toString());
+
+        DecimalFormat df = new DecimalFormat();
+        df.setMaximumFractionDigits(2);
+        hotStocksHolder.tv_percent_change.setText(df.format(percent_change) + "%");
+
+        if(percent_change>0){
+            hotStocksHolder.tv_percent_change.setTextColor(Color.parseColor("#2eb82e"));
+        }
+        else if(percent_change<0){
+            hotStocksHolder.tv_percent_change.setTextColor(0xffff0000);
+        }
+
         return row;
     }
 

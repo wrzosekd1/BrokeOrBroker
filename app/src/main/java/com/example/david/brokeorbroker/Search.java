@@ -1,10 +1,12 @@
 package com.example.david.brokeorbroker;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -16,7 +18,7 @@ public class Search extends ActionBarActivity {
     User user;
     String companySymbol;
     EditText cSymbol;
-    TextView tSymbol,tDate,tHigh,tLow,tOpen,tClose,tVolume,tPercentChange;
+    TextView tSymbol,tDate,tHigh,tLow,tOpen,tClose,tVolume,tPercentChange,tPredict;
     Button favoriteButton;
     String symbol;
     String symbolsInDatabase;
@@ -44,6 +46,8 @@ public class Search extends ActionBarActivity {
         tVolume.setVisibility(View.INVISIBLE);
         tPercentChange = (TextView) findViewById(R.id.tvPC);
         tPercentChange.setVisibility(View.INVISIBLE);
+        tPredict = (TextView) findViewById(R.id.tvPredict);
+        tPredict.setVisibility(View.INVISIBLE);
 
         Intent i = getIntent();
         user = (User) i.getSerializableExtra("sampleObject");
@@ -59,15 +63,21 @@ public class Search extends ActionBarActivity {
     }
 
     public void Search(View view) {
+        InputMethodManager inputManager = (InputMethodManager)
+                getSystemService(Context.INPUT_METHOD_SERVICE);
+
+        inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+                InputMethodManager.HIDE_NOT_ALWAYS);
         companySymbol = cSymbol.getText().toString();
         companySymbol = companySymbol.toUpperCase();
+        String tempSymbol = companySymbol;
         companySymbol = "," + companySymbol + ",";
         String username = user.getUsername();
         symbolsInDatabase = ",YHOO,F,NFLX,ADBE,GE,FB,";
         if (symbolsInDatabase.contains(companySymbol)) {
             BackgroundTask backgroundTask = new BackgroundTask(this);
             String method = "search";
-            backgroundTask.execute(method, username, companySymbol);
+            backgroundTask.execute(method, username, tempSymbol);
         }
     }
 

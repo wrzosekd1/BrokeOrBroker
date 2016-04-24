@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ff72b5b9"
+    android:background="#99ccff"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -15,9 +15,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:padding="75dp"
+        android:padding="50dp"
         android:text="Main Menu"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textStyle="bold"
+        android:textSize="40dp"
+        android:textColor="#0066cc"/>
 
     <LinearLayout
         android:id="@+id/linearLayout1"
@@ -31,17 +34,21 @@
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="75dp"
-            android:layout_weight="0.51"
+            android:layout_weight="0.83"
             android:onClick="SearchCompany"
-            android:text="Search" />
+            android:text="Search"
+            android:background="@drawable/styled_button"
+            style="@style/button_text"/>
 
         <Button
             android:id="@+id/button3"
             android:layout_width="wrap_content"
             android:layout_height="75dp"
-            android:layout_weight=".5"
+            android:layout_weight="0.51"
             android:onClick="Favorites"
-            android:text="Favorites" />
+            android:text="Favorites"
+            android:background="@drawable/styled_button"
+            style="@style/button_text"/>
     </LinearLayout>
 
     <LinearLayout
@@ -55,17 +62,21 @@
             android:id="@+id/button4"
             android:layout_width="wrap_content"
             android:layout_height="75dp"
-            android:layout_weight=".5"
+            android:layout_weight="1.40"
             android:onClick="History"
-            android:text="History" />
+            android:text="History"
+            android:background="@drawable/styled_button"
+            style="@style/button_text"/>
 
         <Button
             android:id="@+id/button6"
             android:layout_width="wrap_content"
             android:layout_height="75dp"
-            android:layout_weight="0.41"
+            android:layout_weight="0.52"
             android:onClick="HotStocks"
-            android:text="Hot Stocks" />
+            android:text="Hot Stocks"
+            android:background="@drawable/styled_button"
+            style="@style/button_text"/>
     </LinearLayout>
 
     <Button
@@ -75,6 +86,8 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:onClick="LogOut"
-        android:text="Log Out" />
+        android:text="Log Out"
+        android:background="@drawable/styled_button"
+        style="@style/button_text"/>
 
 </RelativeLayout>

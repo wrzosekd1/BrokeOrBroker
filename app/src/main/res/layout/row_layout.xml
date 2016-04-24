@@ -8,6 +8,7 @@
         android:id="@+id/tv_left"
         android:layout_alignParentLeft="true"
         android:text="Company"
+        android:textStyle="bold"
         android:gravity="center"
         android:textAppearance="?android:textAppearanceLarge"/>
     <TextView
@@ -16,6 +17,7 @@
         android:id="@+id/tv_right"
         android:layout_toRightOf="@+id/tv_left"
         android:text="PC"
+        android:textStyle="bold"
         android:gravity="center"
         android:textAppearance="?android:textAppearanceLarge"/>
 </RelativeLayout>

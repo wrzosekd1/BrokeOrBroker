@@ -4,18 +4,20 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
-    android:background="#ff72b5b9"
+    android:background="#99ccff"
     >
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login Form"
+        android:text="Broke or Broker"
         android:textAppearance="?android:textAppearanceLarge"
-        android:textStyle="bold"
         android:id="@+id/textView2"
         android:layout_above="@+id/user_name"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="55dp" />
+        android:layout_marginBottom="55dp"
+        android:textStyle="bold"
+        android:textSize="40dp"
+        android:textColor="#0066cc"/>
     <EditText
         android:layout_width="250dp"
         android:layout_height="wrap_content"
@@ -35,7 +37,7 @@
         android:layout_centerHorizontal="true" />
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="120dp"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
         android:id="@+id/linearLayout">
@@ -45,14 +47,23 @@
             android:text="Login"
             android:onClick="userLogin"
             android:layout_weight=".5"
+            android:background="@drawable/styled_button"
+            style="@style/button_text"
             />
         <Button
             android:layout_width="100dp"
             android:layout_height="75dp"
-            android:text="Register Now"
+            android:text="Register"
             android:onClick="userReg"
             android:layout_weight=".5"
-            android:layout_marginBottom="40dp"
-            />
+            android:background="@drawable/styled_button"
+            style="@style/button_text"
+            android:layout_above="@+id/linearLayout"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
     </LinearLayout>
+
+
 </RelativeLayout>
