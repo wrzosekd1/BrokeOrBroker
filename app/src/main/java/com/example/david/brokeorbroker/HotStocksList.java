@@ -22,7 +22,6 @@ public class HotStocksList extends ActionBarActivity {
     JSONArray jsonArray;
     User user;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,8 +33,6 @@ public class HotStocksList extends ActionBarActivity {
         hotStocksAdapter = new HotStocksAdapter(this, R.layout.row_layout);
         listView = (ListView) findViewById(R.id.hslistview);
         listView.setAdapter(hotStocksAdapter);
-
-
 
         json_string = getIntent().getExtras().getString("json_data");
         try {
@@ -56,8 +53,8 @@ public class HotStocksList extends ActionBarActivity {
             }
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
-                public void onItemClick(AdapterView<?> hotStocksAdapter, View view, int position, long id) {
-                    String symbol = String.valueOf(hotStocksAdapter.getItemAtPosition(position));
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    String symbol = String.valueOf(parent.getItemAtPosition(position));
                     Intent i = new Intent(HotStocksList.this, Search.class);
                     i.putExtra("symbol", symbol);
                     i.putExtra("sampleObject", user);
@@ -65,9 +62,6 @@ public class HotStocksList extends ActionBarActivity {
 
                 }
             });
-
-
-
         } catch (JSONException e) {
             e.printStackTrace();
         }

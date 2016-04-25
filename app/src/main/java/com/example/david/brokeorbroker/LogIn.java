@@ -34,7 +34,6 @@ public class LogIn extends Activity {
         User user = new User(login_name, login_pass);
         BackgroundTask backgroundTask = new BackgroundTask(this);
         user.login(backgroundTask);
-
     }
 
 }

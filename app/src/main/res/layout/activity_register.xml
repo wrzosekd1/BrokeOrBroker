@@ -8,82 +8,89 @@
     android:orientation="vertical"
     android:background="#99ccff"
     >
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Registration Form"
-        android:textAppearance="?android:textAppearanceLarge"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:textStyle="bold"
-        android:textSize="35dp"
-        android:textColor="#0066cc"
-        />
-    <EditText
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:hint="Name"
-        android:id="@+id/name"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="40dp"
-        />
-
-    <EditText
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:hint="Email"
-        android:id="@+id/email"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        />
-    <EditText
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:hint="User Name"
-        android:id="@+id/new_user_name"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        />
-    <EditText
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:hint="Password"
-        android:id="@+id/new_user_pass"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        android:inputType="textPassword"
-        />
-
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginTop="120dp"
-
-        >
-        <Button
+        android:layout_height="wrap_content">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="75dp"
-            android:text="Register"
-            android:onClick="userReg"
-            android:layout_weight=".5"
-            android:layout_marginTop="60dp"
-            android:background="@drawable/styled_button"
-            style="@style/button_text"
-            />
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Registration Form"
+                android:textAppearance="?android:textAppearanceLarge"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:textSize="35dp"
+                android:textColor="#0066cc"
+                />
+            <EditText
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:hint="Name"
+                android:id="@+id/name"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="40dp"
+                />
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="75dp"
-            android:text="Return"
-            android:onClick="userReturn"
-            android:layout_weight=".5"
-            android:layout_marginTop="60dp"
-            android:background="@drawable/styled_button"
-            style="@style/button_text"
-            />
+            <EditText
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:id="@+id/email"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                />
+            <EditText
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:hint="User Name"
+                android:id="@+id/new_user_name"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                />
+            <EditText
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:id="@+id/new_user_pass"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:inputType="textPassword"
+                />
 
-    </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="120dp"
 
+                >
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="75dp"
+                    android:text="Register"
+                    android:onClick="userReg"
+                    android:layout_weight=".5"
+                    android:layout_marginTop="60dp"
+                    android:background="@drawable/styled_button"
+                    style="@style/button_text"
+                    />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="75dp"
+                    android:text="Return"
+                    android:onClick="userReturn"
+                    android:layout_weight=".5"
+                    android:layout_marginTop="60dp"
+                    android:background="@drawable/styled_button"
+                    style="@style/button_text"
+                    />
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

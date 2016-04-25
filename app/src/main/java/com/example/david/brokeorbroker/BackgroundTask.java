@@ -446,7 +446,6 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
             //changes percent text color based if percentage is above or below 0
             if (Double.parseDouble(percent_change) < 0)
             {
-
                 tvPercent.setTextColor(Color.parseColor("#FF0000"));
             }
             else if (Double.parseDouble(percent_change) > 0)
@@ -455,7 +454,5 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
             }
 
         }
-
-
     }
 }
