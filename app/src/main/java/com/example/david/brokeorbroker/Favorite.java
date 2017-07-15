@@ -30,7 +30,7 @@ public class Favorite {
 
     @Override
     public String toString() {
-	//testing git
+	//testing git 2
         return company;
     }
 }
