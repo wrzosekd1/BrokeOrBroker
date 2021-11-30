@@ -27,7 +27,7 @@ public class Favorite {
     public void setPercent_change(String percent_change) {
         this.percent_change = percent_change;
     }
-	//TEST
+	//!TEST
     @Override
     public String toString() {
 	//testing git 2
